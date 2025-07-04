@@ -4,79 +4,110 @@ import { SITE_TITLE } from '../consts';
 ---
 
 <header>
-	<nav>
-		<h2><a href="/"> <img src="/images/logo.png" alt="MK Photography logo" width="48" height="48" style="border-radius: 8px;" />
-    {SITE_TITLE}</a></h2>
-	<!--	<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div> --!>
-		<div class="social-links">
-		<!-- Instagram -->
-<a href="https://www.instagram.com/mkcandidphotography/" target="_blank" rel="noopener noreferrer">
-  <span class="sr-only">Follow us on Instagram</span>
-  <svg viewBox="0 0 448 512" aria-hidden="true" width="32" height="32">
-    <path fill="currentColor" d="M224,202.66A53.34,53.34,0,1,0,277.34,256,53.38,53.38,0,0,0,224,202.66ZM398.8,80A48.6,48.6,0,0,0,368,51.2C337.14,48,110.86,48,80,51.2A48.6,48.6,0,0,0,51.2,80C48,110.86,48,337.14,51.2,368A48.6,48.6,0,0,0,80,398.8c30.86,3.2,257.14,3.2,288,0A48.6,48.6,0,0,0,398.8,368c3.2-30.86,3.2-257.14,0-288ZM224,338a82,82,0,1,1,82-82A82.09,82.09,0,0,1,224,338Zm85.4-148.1a19.2,19.2,0,1,1,19.2-19.2A19.18,19.18,0,0,1,309.4,189.9Z" />
-  </svg>
-</a>
-
-<!-- Facebook -->
-<a href="https://www.facebook.com/muthu21k" target="_blank" rel="noopener noreferrer">
-  <span class="sr-only">Follow us on Facebook</span>
-  <svg viewBox="0 0 320 512" aria-hidden="true" width="32" height="32">
-    <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91V133.33c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S271.11 0 243.1 0c-73.22 0-121.1 44.38-121.1 124.72V195.3H83.33V288h38.67v224h94.67V288z"/>
-  </svg>
-</a>
-
-		</div>
-	</nav>
+  <nav>
+    <div class="header-container">
+      <a href="/" class="brand">
+        <img src="/images/logo.png" alt="MK Photography logo" width="64" height="64" class="logo" />
+        <h3>{SITE_TITLE}</h3>
+      </a>
+    <!--  <div class="nav-links">
+        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/about">About</HeaderLink>
+        <HeaderLink href="/contact">Contact</HeaderLink>
+      </div>--!>
+      <div class="social-links">
+        <a href="https://www.instagram.com/mkcandidphotography/" target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">Instagram</span>
+          <img src="/images/instagram-color.svg" alt="Instagram" width="32" height="32" />
+        </a>
+        <a href="https://www.facebook.com/muthu21k" target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">Facebook</span>
+          <img src="/images/facebook-color.svg" alt="Facebook" width="32" height="32" />
+        </a>
+      </div>
+    </div>
+  </nav>
 </header>
-<style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
 
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	}
-	a svg {
-  fill: currentColor;
-  transition: color 0.3s ease;
-}
-a:hover svg {
-  color: #ff5e5e; /* Optional hover color */
-}
+<!-- Image Carousel
+<section class="carousel">
+  <div class="carousel-track">
+    <img src="/images/carousel/photo1.jpg" alt="Wedding moment 1" />
+    <img src="/images/carousel/photo2.jpg" alt="Wedding moment 2" />
+    <img src="/images/carousel/photo3.jpg" alt="Wedding moment 3" />
+    <img src="/images/carousel/photo4.jpg" alt="Wedding moment 4" />
+  </div>
+</section> -->
+
+<style>
+  header {
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1rem 2rem;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .logo {
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-links img {
+    transition: transform 0.3s ease;
+  }
+
+  .social-links a:hover img {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 720px) {
+    .nav-links {
+      display: none;
+    }
+  }
+
+  .carousel {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .carousel-track {
+    display: flex;
+    animation: scroll 20s linear infinite;
+  }
+
+  .carousel-track img {
+    min-width: 100%;
+    object-fit: cover;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-300%); }
+  }
 </style>

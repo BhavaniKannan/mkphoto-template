@@ -8,45 +8,51 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
   <head>
     <BaseHead title="Contact | MK Photography" description="Get in touch with MK Photography to book a session or inquire about our services." />
+    <style>
+      .contact-container {
+        margin: auto;
+        padding: 2rem;
+      }
+
+      .contact-container h1,
+      .contact-container p {
+        text-align: center;
+      }
+
+      .contact-details {
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+       @media (max-width: 600px) {
+        .contact-container {
+          padding: 1rem;
+        }
+
+        .contact-container h1 {
+          font-size: 1.75rem;
+        }
+
+        .contact-container p,
+        .contact-details p {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <Header />
 
-    <main style="max-width: 800px; margin: auto; padding: 2rem;">
-      <h1 style="text-align: center;">Contact Us</h1>
-      <p style="text-align: center; margin-bottom: 2rem;">
+    <main class="contact-container">
+      <h1>Contact Us</h1>
+      <p>
         We'd love to hear from you! Whether you’re planning your big day or capturing special memories, reach out and let’s create something beautiful together.
       </p>
 
-    <!--  <form action="https://formsubmit.co/muthu21k@gmail.com" method="POST" enctype="text/plain" style="display: grid; gap: 1.5rem;">
-        <label>
-          Name:<br />
-          <input type="text" name="name" required style="width: 100%; padding: 0.5rem;" />
-        </label>
-
-        <label>
-          Email:<br />
-          <input type="email" name="email" required style="width: 100%; padding: 0.5rem;" />
-        </label>
-
-        <label>
-          Subject:<br />
-          <input type="text" name="subject" style="width: 100%; padding: 0.5rem;" />
-        </label>
-
-        <label>
-          Message:<br />
-          <textarea name="message" rows="6" required style="width: 100%; padding: 0.5rem;"></textarea>
-        </label>
-
-        <button type="submit" style="background: #ff5e5e; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer;">
-          Send Message
-        </button>
-      </form>--!>
-
-      <div style="text-align: center; margin-top: 3rem;">
+      <div class="contact-details">
         <p><strong>Email:</strong> <a href="mailto:muthu21k@gmail.com">muthu21k@gmail.com</a></p>
         <p><strong>Phone:</strong> <a href="tel:+918838564547">+91 8838564547</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/918838564547" target="_blank">Chat on WhatsApp</a></p>
         <p><strong>Instagram:</strong> <a href="https://instagram.com/mkcandidphotography" target="_blank">@mkcandidphotography</a></p>
       </div>
     </main>
