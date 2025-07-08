@@ -1,5 +1,5 @@
 <!-- Contact Section -->
-<section class="contact-section">
+<section class="contact-section  animate-on-scroll">
   <h2>Get in Touch</h2>
   <div class="contact-details">
     <p>
@@ -61,5 +61,15 @@
       flex-direction: column;
       gap: 0.2rem;
     }
-  }
+  }.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 </style>

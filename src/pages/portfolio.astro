@@ -11,7 +11,7 @@ const images = [
 ];
 ---
 
-<section id="portfolio" class="portfolio">
+<section id="portfolio" class="portfolio animate-on-scroll">
   <h2>Portfolio</h2>
   <div class="portfolio-grid">
     {images.map(({ src, alt }, index) => (
@@ -122,6 +122,16 @@ const images = [
   .portfolio-grid {
     grid-template-columns: 1fr;
   }
+}
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 </style>
