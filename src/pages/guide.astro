@@ -1,1 +1,51 @@
+<!-- Intro.js CSS & JS via CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@4.3.0/minified/introjs.min.css">
+<script src="https://cdn.jsdelivr.net/npm/intro.js@4.3.0/minified/intro.min.js"></script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tour = introJs();
+    tour.setOptions({
+      steps: [
+        { intro: `
+    <div style="display: flex; align-items: center;">
+      <img src="/images/character.png" alt="Guide" style="width: 60px; height: auto; margin-right: 1rem;" />
+      <div>
+        <strong>Welcome to MK Photography!</strong>
+      </div>
+    </div>
+  ` },
+        { element: '#hero', intro:  `
+    <div style="display: flex; align-items: center;">
+      <img src="/images/character.png" alt="Guide" style="width: 60px; height: auto; margin-right: 1rem;" />
+      <div>
+        <strong>Hi! I’m your guide.</strong><br/>
+        Let me show you around ✨
+      </div>
+    </div>
+  ` },
+        { element: '#portfolio', intro: `
+    <div style="display: flex; align-items: center;">
+      <img src="/images/character.png" alt="Guide" style="width: 60px; height: auto; margin-right: 1rem;" />
+      <div>
+       This is our portfolio. Check out our favorite clicks 📸
+      </div>
+    </div>
+  ` },
+        { element: '#contact', intro:`
+    <div style="display: flex; align-items: center;">
+      <img src="/images/character.png" alt="Guide" style="width: 60px; height: auto; margin-right: 1rem;" />
+      <div>
+       Want to talk? Reach us via email or phone or social 💌
+      </div>
+    </div>
+  ` }
+      ],
+      showProgress: true,
+      nextLabel: 'Next ➜',
+      prevLabel: '⬅ Back',
+      doneLabel: 'Finish'
+    });
+    setTimeout(() => tour.start(), 800);
+  });
+</script>
