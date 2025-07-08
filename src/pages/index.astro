@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Portfolio from './portfolio.astro';
+import Contact from './contact.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
@@ -10,71 +11,137 @@ import { SITE_TITLE } from '../consts';
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description="Timeless photography for weddings, portraits, and special moments." />
+    <style>
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url('/images/bg.jpg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+
+      .overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hero-content {
+        animation: fadeInUp 1s ease-out forwards;
+        opacity: 0;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        color: #ffffff;
+        animation: slideDown 1s ease-out 0.2s forwards;
+        opacity: 0;
+      }
+
+      .hero-content h1 span {
+        color: #ff6161;
+      }
+
+      .hero-content p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        color: #e0e0e0;
+        animation: fadeIn 1.5s ease-out 0.6s forwards;
+        opacity: 0;
+      }
+
+      .hero-content h1,
+      .hero-content p {
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+      }
+
+      .cta-button {
+        background-color: #ff4747;
+        color: white;
+        font-weight: bold;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+        animation: fadeInUp 1.2s ease-out 1s forwards;
+        opacity: 0;
+      }
+
+      .cta-button:hover {
+        background-color: #e60000;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideDown {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .hero-content p {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <Header />
-
     <main>
       <!-- Hero Section -->
-      <section
-  style="
-    background: url('/images/bg.jpg') center center / cover no-repeat;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding: 2rem;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-  "
->
-  <div
-    style="
-      background: rgba(0, 0, 0, 0.5);
-      padding: 1rem 2rem;
-      border-radius: 8px;
-    "
-  >
-    <h1 style="font-size: 3rem; margin: 0;color: rgb(var(--white));">Welcome to MK Photography</h1>
-    <p style="font-size: 1.2rem; margin-top: 1rem;">
-      Capturing life’s most precious moments with elegance and emotion.
-    </p>
-    <a
-      href="#gallery"
-      style="
-        margin-top: 2rem;
-        background: #e63946;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        display: inline-block;
-      "
-    >
-      View Portfolio
-    </a>
-  </div>
-</section>
-
+      <section class="hero">
+        <div class="overlay">
+          <div class="hero-content">
+            <h1>Welcome to <span>MK Photography</span></h1>
+            <p>Capturing life’s most precious moments with elegance and emotion.</p>
+            <a href="#portfolio" class="cta-button">View Portfolio</a>
+          </div>
+        </div>
+      </section>
 
       <!-- Gallery Section -->
       <Portfolio />
-      <!-- Contact Section -->
-      <section style="padding: 2rem; background: #f2f2f2; text-align: center;">
-        <h2>Contact Us</h2>
-        <p>
-          📧 <a href="mailto:muthu21k@gmail.com">muthu21k@gmail.com</a><br />
-          📞 <a href="tel:+918838564547">+91 88385 64547</a><br />
-          📸 <a href="https://instagram.com/mkcandidphotography" target="_blank">@mkcandidphotography</a>
-        </p>
-      </section>
-    </main>
 
+      <!-- Contact Section -->
+      <Contact />
+    </main>
     <Footer />
   </body>
 </html>

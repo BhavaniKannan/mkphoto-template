@@ -1,62 +1,65 @@
----
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
----
+<!-- Contact Section -->
+<section class="contact-section">
+  <h2>Get in Touch</h2>
+  <div class="contact-details">
+    <p>
+      <span>📧</span>
+      <a href="mailto:muthu21k@gmail.com">muthu21k@gmail.com</a>
+    </p>
+    <p>
+      <span>📞</span>
+      <a href="tel:+918838564547">+91 88385 64547</a>
+    </p>
+    <p>
+      <span>📸</span>
+      <a href="https://instagram.com/mkcandidphotography" target="_blank" rel="noopener">
+        @mkcandidphotography
+      </a>
+    </p>
+  </div>
+</section>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title="Contact | MK Photography" description="Get in touch with MK Photography to book a session or inquire about our services." />
-    <style>
-      .contact-container {
-        margin: auto;
-        padding: 2rem;
-      }
+<style>
+  .contact-section {
+    padding: 3rem 1.5rem;
+    background: #f9f9f9;
+    text-align: center;
+  }
 
-      .contact-container h1,
-      .contact-container p {
-        text-align: center;
-      }
+  .contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #222;
+  }
 
-      .contact-details {
-        text-align: center;
-        margin-top: 3rem;
-      }
+  .contact-details p {
+    margin: 0.75rem 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 
-       @media (max-width: 600px) {
-        .contact-container {
-          padding: 1rem;
-        }
+  .contact-details a {
+    color:rgb(230, 57, 201);
+    text-decoration: none;
+    font-weight: 500;
+  }
 
-        .contact-container h1 {
-          font-size: 1.75rem;
-        }
+  .contact-details a:hover {
+    text-decoration: underline;
+  }
 
-        .contact-container p,
-        .contact-details p {
-          font-size: 1rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
+  @media (max-width: 600px) {
+    .contact-section h2 {
+      font-size: 1.6rem;
+    }
 
-    <main class="contact-container">
-      <h1>Contact Us</h1>
-      <p>
-        We'd love to hear from you! Whether you’re planning your big day or capturing special memories, reach out and let’s create something beautiful together.
-      </p>
-
-      <div class="contact-details">
-        <p><strong>Email:</strong> <a href="mailto:muthu21k@gmail.com">muthu21k@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+918838564547">+91 8838564547</a></p>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/918838564547" target="_blank">Chat on WhatsApp</a></p>
-        <p><strong>Instagram:</strong> <a href="https://instagram.com/mkcandidphotography" target="_blank">@mkcandidphotography</a></p>
-      </div>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+    .contact-details p {
+      font-size: 1rem;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+  }
+</style>

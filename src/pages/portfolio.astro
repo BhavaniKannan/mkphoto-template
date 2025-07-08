@@ -6,56 +6,167 @@ const images = [
   { src: "/images/photo4.jpg", alt: "Bride getting ready" },
   { src: "/images/photo5.jpg", alt: "Sunset shoot" },
   { src: "/images/photo6.jpg", alt: "Temple wedding" },
-  { src: "/images/photo7.jpg", alt: "Couple silhouette" },
-  { src: "/images/photo8.jpg", alt: "Makeup" },
+  { src: "/images/photo7.jpg", alt: "Couple silhouette 2" },
+  { src: "/images/photo8.jpg", alt: "Makeup shot" },
 ];
 ---
 
-<section  id="gallery" class="portfolio">
+<section id="portfolio" class="portfolio">
   <h2>Portfolio</h2>
   <div class="portfolio-grid">
-    {images.map(({ src, alt }) => (
-      <img src={src} alt={alt} loading="lazy" />
+    {images.map(({ src, alt }, index) => (
+      <img src={src} alt={alt} class="gallery-img" data-index={index} loading="lazy" />
     ))}
   </div>
 </section>
 
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox hidden">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" />
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+
 <style>
-  .portfolio {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
-  }
+.portfolio {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
 
-  .portfolio h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    font-weight: bold;
-  }
+.portfolio h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
 
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Lightbox Styling */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  flex-direction: column;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.lightbox .prev,
+.lightbox .next {
+  position: absolute;
+  top: 50%;
+  color: white;
+  font-size: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 1rem;
+  transform: translateY(-50%);
+  user-select: none;
+}
+
+.lightbox .prev {
+  left: 20px;
+}
+
+.lightbox .next {
+  right: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 640px) {
   .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr;
   }
+}
 
-  .portfolio-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .portfolio-grid img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 640px) {
-    .portfolio-grid {
-      grid-template-columns: 1fr;
-    }
-  }
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const images = Array.from(document.querySelectorAll(".gallery-img"));
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector(".close");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    let currentIndex = 0;
+
+    const showImage = (index) => {
+      const { src, alt } = images[index];
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      currentIndex = index;
+      lightbox.classList.remove("hidden");
+    };
+
+    images.forEach((img, index) => {
+      img.addEventListener("click", () => showImage(index));
+    });
+
+    closeBtn.addEventListener("click", () => {
+      lightbox.classList.add("hidden");
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (lightbox.classList.contains("hidden")) return;
+      if (e.key === "ArrowRight") nextBtn.click();
+      if (e.key === "ArrowLeft") prevBtn.click();
+      if (e.key === "Escape") closeBtn.click();
+    });
+  });
+</script>
