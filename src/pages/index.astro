@@ -2,74 +2,79 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Portfolio from './portfolio.astro';
+import { SITE_TITLE } from '../consts';
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-    h1 {
-  word-break: keep-word;
-  white-space: normal;
-  text-align: center;
-  font-size: 2rem; /* adjust as needed */
-}
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.75rem;
-  }
-}</style>
+    <BaseHead title={SITE_TITLE} description="Timeless photography for weddings, portraits, and special moments." />
   </head>
   <body>
     <Header />
+
     <main>
-      <section style="padding: 2rem; max-width: 800px; margin: auto; text-align: center;">
-        <h1>Welcome to MK Photography</h1>
-        <p style="font-size: 1.1rem; margin-top: 1rem;">
-          At MK Photography, we specialize in capturing the essence of life’s most precious moments with elegance and authenticity.
-          From weddings and engagements to maternity and candid events, we transform your memories into timeless visual narratives.
+      <!-- Hero Section -->
+      <section
+  style="
+    background: url('/images/bg.jpg') center center / cover no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  "
+>
+  <div
+    style="
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+    "
+  >
+    <h1 style="font-size: 3rem; margin: 0;color: rgb(var(--white));">Welcome to MK Photography</h1>
+    <p style="font-size: 1.2rem; margin-top: 1rem;">
+      Capturing life’s most precious moments with elegance and emotion.
+    </p>
+    <a
+      href="#gallery"
+      style="
+        margin-top: 2rem;
+        background: #e63946;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+      "
+    >
+      View Portfolio
+    </a>
+  </div>
+</section>
+
+
+      <!-- Gallery Section -->
+      <Portfolio />
+      <!-- Contact Section -->
+      <section style="padding: 2rem; background: #f2f2f2; text-align: center;">
+        <h2>Contact Us</h2>
+        <p>
+          📧 <a href="mailto:muthu21k@gmail.com">muthu21k@gmail.com</a><br />
+          📞 <a href="tel:+918838564547">+91 88385 64547</a><br />
+          📸 <a href="https://instagram.com/mkcandidphotography" target="_blank">@mkcandidphotography</a>
         </p>
-        <p style="font-style: italic; margin-top: 1.5rem;">Love in Motion: Your Day, Our Expertise.</p>
-      </section>
-
-      <section style="background: #f9f9f9; padding: 2rem;">
-        <h2 style="text-align: center;">Our Services</h2>
-        <div style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); max-width: 1000px; margin: auto; padding-top: 1rem;">
-          <div>
-            <h3>Wedding Photography</h3>
-            <p>Elegant captures of your most cherished day.</p>
-          </div>
-          <div>
-            <h3>Pre-Wedding & Engagement</h3>
-            <p>Romantic shoots tailored to your love story.</p>
-          </div>
-          <div>
-            <h3>Maternity & Newborn</h3>
-            <p>Celebrate new life with heartfelt portraits.</p>
-          </div>
-          <div>
-            <h3>Candid Moments</h3>
-            <p>Unscripted beauty captured with creativity.</p>
-          </div>
-          <div>
-            <h3>Event Photography</h3>
-            <p>Birthdays, housewarmings & celebrations.</p>
-          </div>
-          <div>
-            <h3>Customized Packages</h3>
-            <p>Personalized photography for your unique needs.</p>
-          </div>
-        </div>
-      </section>
-
-      <section style="text-align: center; padding: 2rem;">
-        <h2>Let’s Create Something Beautiful</h2>
-        <p>Contact us today to capture your unforgettable moments.</p>
-        <a href="/contact" style="display: inline-block; margin-top: 1rem; background: #ff5e5e; color: #fff; padding: 12px 24px; border-radius: 5px; text-decoration: none;">Get in Touch</a>
       </section>
     </main>
+
     <Footer />
   </body>
 </html>
