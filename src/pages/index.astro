@@ -4,12 +4,15 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Portfolio from './portfolio.astro';
 import Contact from './contact.astro';
+import Guide from './guide.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
+<script type="module" src="/src/scripts/tour.js"></script>
     <BaseHead title={SITE_TITLE} description="Timeless photography for weddings, portraits, and special moments." />
     <style>
       .hero {
@@ -152,7 +155,7 @@ import { SITE_TITLE } from '../consts';
     <Header />
     <main>
       <!-- Hero Section -->
-      <section class="hero">
+      <section id="hero" class="hero">
         <div class="overlay">
           <div class="hero-content">
             <h1>Welcome to <span>MK Photography</span></h1>
